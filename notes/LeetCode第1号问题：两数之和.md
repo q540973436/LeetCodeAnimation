@@ -61,6 +61,34 @@ public:
     }
 };
 
+ /**
+     * 
+     * <br>
+     * @author wwx683234
+     * @since  iFad Platform V100R001, 2019年8月19日
+     * 时间复杂度o(n)
+     * sumMap记录已遍历数据和位置
+     * 用目标值-当前值=差值  差值在map中查找
+     * 如果用2次for循环查找则为o(n2)
+     */
+    private static int[] getTarget(int[] a){
+        //key为值,value为地址
+        Map<Integer, Integer> sumMap=new HashMap<Integer, Integer>();
+        
+        int[] index=new int[2];
+        int temp=0;
+        for(int i=0;i<a.length;i++) {
+            temp=target-a[i];
+            if(sumMap.containsKey(temp)){
+                index[0]=i;
+                index[1]=sumMap.get(temp);
+                System.out.println(index[0]+"------"+index[1]);
+            }
+            sumMap.put(a[i], i);
+        }
+        
+        return index;
+    }
 ```
 
 
